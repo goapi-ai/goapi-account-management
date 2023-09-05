@@ -1,6 +1,7 @@
 # goapi-account-management
 Webpages that perform api account management functions for [GoAPI](https://www.goapi.ai/)
-- Hosted on github pages, feel free to host on your device.
+- Default hosted on our github pages [HERE](https://goapi-ai.github.io/goapi-account-management/)
+- Feel free to host on your device.
 
 ## Supported Operations
 - Redeem a code for an account: [GoAPI Redeem](https://goapi-ai.github.io/goapi-account-management/)
