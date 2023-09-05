@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoAPI Redeem</title>
+    <script>
+        async function redeemCode() {
+            const apiKey = document.getElementById('apiKey').value;
+            const redeemCode = document.getElementById('redeemCode').value;
+
+            const url = "https://api.midjourneyapi.xyz/account/code/retrieve";
+            const payload = JSON.stringify({
+                "code": redeemCode
+            });
+            const headers = {
+                'X-API-KEY': apiKey,
+                'Content-Type': 'application/json'
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: headers,
+                    body: payload
+                });
+                const responseData = await response.text();
+                document.getElementById('responseBox').value = responseData;
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById('responseBox').value = "Error occurred. Please try again.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <label for="apiKey">X-API-KEY:</label>
+        <input type="text" id="apiKey">
+    </div>
+    <div>
+        <label for="redeemCode">Redeem Code:</label>
+        <input type="text" id="redeemCode">
+    </div>
+    <button onclick="redeemCode()">Redeem</button>
+    <div>
+        <label for="responseBox">API Response:</label>
+        <textarea id="responseBox" rows="10" cols="50" readonly></textarea>
+    </div>
+</body>
+</html>
